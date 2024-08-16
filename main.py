@@ -207,7 +207,14 @@ def convert_pressure(value, from_unit, to_unit):
         "gauge pressure": 101325.0,
         "absolute pressure": 101325.0,
         "differential pressure": 101325.0,
-        "vapor pressure": 100000.0
+        "vapor pressure": 100000.0,
+        "inches of water": 249.088,
+        "millibars": 100.0,
+        "hectopascals (hPa)": 100.0,
+        "kilobars": 100000.0,
+        "exabytes per square meter": 1e-18,
+        "petabytes per square meter": 1e-15,
+        "terabytes per square meter": 1e-12
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -239,7 +246,13 @@ def convert_power(value, from_unit, to_unit):
         "joules per second": 1.0,
         "thermal units": 1055.06,
         "horsepower hours": 745.7,
-        "ergs per second": 1e-7
+        "ergs per second": 1e-7,
+        "BTU per minute": 0.04923,
+        "calories per hour": 15000.0,
+        "kilojoules per second": 1000.0,
+        "megajoules per minute": 60000.0,
+        "gigajoules per hour": 3600000.0,
+        "terajoules per day": 3.6e12
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -264,7 +277,20 @@ def convert_voltage(value, from_unit, to_unit):
         "volt-hours": 1.0,
         "volt-seconds": 1.0,
         "voltage drop": 1.0,
-        "electric potential": 1.0
+        "electric potential": 1.0,
+        "microvolts per meter": 1e-6,
+        "millivolts per meter": 1e-3,
+        "kilovolts per meter": 1e3,
+        "megavolts per meter": 1e6,
+        "gigavolts per meter": 1e9,
+        "millivolts per centimeter": 1e-2,
+        "microvolts per centimeter": 1e-5,
+        "kilovolts per centimeter": 1e1,
+        "megavolts per centimeter": 1e4,
+        "gigavolts per centimeter": 1e7,
+        "statvolts per meter": 299.792,
+        "abvolts per meter": 1e-8,
+        "volts per second": 1.0
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -305,7 +331,12 @@ def convert_energy(value, from_unit, to_unit):
         "megajoules per hour": 3.6e9,
         "gigajoules per second": 1e9,
         "gigajoules per minute": 6e10,
-        "gigajoules per hour": 3.6e12
+        "gigajoules per hour": 3.6e12,
+        "BTUs": 1055.06,
+        "kcal": 4184.0,
+        "kWh": 3600.0,
+        "MWh": 3.6e6,
+        "GWh": 3.6e9
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -313,6 +344,43 @@ def convert_energy(value, from_unit, to_unit):
         return None
 
 def convert_frequency(value, from_unit, to_unit):
+    units = {
+        "hertz": 1.0,
+        "kilohertz": 1e3,
+        "megahertz": 1e6,
+        "gigahertz": 1e9,
+        "terahertz": 1e12,
+        "revolutions per second": 1.0,
+        "revolutions per minute": 0.0166667,
+        "cycles per second": 1.0,
+        "cycles per minute": 0.0166667,
+        "rpm": 0.0166667,
+        "beats per minute": 0.0166667,
+        "oscillations per second": 1.0,
+        "pulses per second": 1.0,
+        "wavelength per second": 1.0,
+        "frequency per second": 1.0,
+        "hertz per second": 1.0,
+        "kilohertz per second": 1e3,
+        "megahertz per second": 1e6,
+        "gigahertz per second": 1e9,
+        "terahertz per second": 1e12,
+        "hertz per minute": 0.0166667,
+        "kilohertz per minute": 1e-2,
+        "megahertz per minute": 1e-5,
+        "gigahertz per minute": 1e-8,
+        "terahertz per minute": 1e-11,
+        "hertz per hour": 2.77778e-4,
+        "kilohertz per hour": 2.77778e-7,
+        "megahertz per hour": 2.77778e-10,
+        "gigahertz per hour": 2.77778e-13,
+        "terahertz per hour": 2.77778e-16
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+def convert_frequency_(value, from_unit, to_unit):
     units = {
         "hertz": 1.0,
         "kilohertz": 1e3,
@@ -360,7 +428,7 @@ def convert_frequency(value, from_unit, to_unit):
 
 def main():
     while True:
-        print("Select conversion type:")
+        print("\nUnit Converter")
         print("1. Temperature")
         print("2. Area")
         print("3. Volume")
@@ -370,17 +438,15 @@ def main():
         print("7. Voltage")
         print("8. Energy")
         print("9. Frequency")
-        print("0. Exit")
-        
-        choice = input("Enter choice (0-9): ")
-        
-        if choice == "0":
+        print("10. Exit")
+        choice = input("Enter your choice: ")
+        if choice == "10":
             break
         
-        value = float(input("Enter value to convert: "))
+        value = float(input("Enter the value: "))
         from_unit = input("Enter from unit: ")
         to_unit = input("Enter to unit: ")
-        
+
         if choice == "1":
             result = convert_temperature(value, from_unit, to_unit)
         elif choice == "2":
