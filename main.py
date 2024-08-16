@@ -380,51 +380,6 @@ def convert_frequency(value, from_unit, to_unit):
         return value * (units[to_unit] / units[from_unit])
     else:
         return None
-def convert_frequency_(value, from_unit, to_unit):
-    units = {
-        "hertz": 1.0,
-        "kilohertz": 1e3,
-        "megahertz": 1e6,
-        "gigahertz": 1e9,
-        "terahertz": 1e12,
-        "revolutions per second": 1.0,
-        "revolutions per minute": 0.0166667,
-        "cycles per second": 1.0,
-        "cycles per minute": 0.0166667,
-        "rpm": 0.0166667,
-        "beats per minute": 0.0166667,
-        "oscillations per second": 1.0,
-        "pulses per second": 1.0,
-        "wavelength per second": 1.0,
-        "frequency per second": 1.0,
-        "hertz per second": 1.0,
-        "kilohertz per second": 1e3,
-        "megahertz per second": 1e6,
-        "gigahertz per second": 1e9,
-        "terahertz per second": 1e12,
-        "cpm": 0.0166667,
-        "hz": 1.0,
-        "kHz": 1e3,
-        "MHz": 1e6,
-        "GHz": 1e9,
-        "THz": 1e12,
-        "rotations per minute": 0.0166667,
-        "vibrations per second": 1.0,
-        "oscillations per minute": 0.0166667,
-        "pulses per minute": 0.0166667,
-        "sound waves per second": 1.0,
-        "sound waves per minute": 0.0166667,
-        "cycles per hour": 0.000277778,
-        "oscillations per hour": 0.000277778,
-        "hertz per hour": 0.000277778,
-        "kilohertz per hour": 0.277778,
-        "megahertz per hour": 277.778,
-        "gigahertz per hour": 277778.0
-    }
-    if from_unit in units and to_unit in units:
-        return value * (units[to_unit] / units[from_unit])
-    else:
-        return None
 
 def main():
     while True:
@@ -439,40 +394,249 @@ def main():
         print("8. Energy")
         print("9. Frequency")
         print("10. Exit")
+        print("11. Length")
+        print("12. Mass")
+        print("13. Time")
+        print("14. Density")
+        print("15. Force")
+        print("16. Data")
         choice = input("Enter your choice: ")
         if choice == "10":
             break
         
-        value = float(input("Enter the value: "))
-        from_unit = input("Enter from unit: ")
-        to_unit = input("Enter to unit: ")
-
-        if choice == "1":
-            result = convert_temperature(value, from_unit, to_unit)
-        elif choice == "2":
-            result = convert_area(value, from_unit, to_unit)
-        elif choice == "3":
-            result = convert_volume(value, from_unit, to_unit)
-        elif choice == "4":
-            result = convert_speed(value, from_unit, to_unit)
-        elif choice == "5":
-            result = convert_pressure(value, from_unit, to_unit)
-        elif choice == "6":
-            result = convert_power(value, from_unit, to_unit)
-        elif choice == "7":
-            result = convert_voltage(value, from_unit, to_unit)
-        elif choice == "8":
-            result = convert_energy(value, from_unit, to_unit)
-        elif choice == "9":
-            result = convert_frequency(value, from_unit, to_unit)
+        if choice == "11":
+            print("Length conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_length(value, from_unit, to_unit)
+        elif choice == "12":
+            print("Mass conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_mass(value, from_unit, to_unit)
+        elif choice == "13":
+            print("Time conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_time(value, from_unit, to_unit)
+        elif choice == "14":
+            print("Density conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_density(value, from_unit, to_unit)
+        elif choice == "15":
+            print("Force conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_force(value, from_unit, to_unit)
+        elif choice == "16":
+            print("Data conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_data(value, from_unit, to_unit)
         else:
-            print("Invalid choice")
-            continue
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+
+            if choice == "1":
+                result = convert_temperature(value, from_unit, to_unit)
+            elif choice == "2":
+                result = convert_area(value, from_unit, to_unit)
+            elif choice == "3":
+                result = convert_volume(value, from_unit, to_unit)
+            elif choice == "4":
+                result = convert_speed(value, from_unit, to_unit)
+            elif choice == "5":
+                result = convert_pressure(value, from_unit, to_unit)
+            elif choice == "6":
+                result = convert_power(value, from_unit, to_unit)
+            elif choice == "7":
+                result = convert_voltage(value, from_unit, to_unit)
+            elif choice == "8":
+                result = convert_energy(value, from_unit, to_unit)
+            elif choice == "9":
+                result = convert_frequency(value, from_unit, to_unit)
+            else:
+                print("Invalid choice")
+                continue
         
         if result is not None:
             print(f"Converted value: {result}")
         else:
             print("Invalid units")
+
+def convert_length(value, from_unit, to_unit):
+    units = {
+        "meters": 1.0,
+        "kilometers": 1e3,
+        "centimeters": 1e-2,
+        "millimeters": 1e-3,
+        "micrometers": 1e-6,
+        "nanometers": 1e-9,
+        "miles": 1609.34,
+        "yards": 0.9144,
+        "feet": 0.3048,
+        "inches": 0.0254,
+        "nautical miles": 1852.0,
+        "light years": 9.4607e15,
+        "astronomical units": 1.496e11,
+        "parsecs": 3.086e16,
+        "fathoms": 1.8288,
+        "rods": 5.0292,
+        "chains": 20.1168,
+        "furlongs": 201.168,
+        "stadia": 185.0,
+        "meters per second": 1.0,
+        "kilometers per hour": 0.277778,
+        "miles per hour": 0.44704,
+        "feet per second": 0.3048,
+        "nautical miles per hour": 0.514444,
+        "centimeters per second": 0.01,
+        "inches per second": 0.0254,
+        "yards per second": 0.9144
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_mass(value, from_unit, to_unit):
+    units = {
+        "grams": 1.0,
+        "kilograms": 1e3,
+        "milligrams": 1e-3,
+        "micrograms": 1e-6,
+        "pounds": 453.592,
+        "ounces": 28.3495,
+        "tons": 907184.74,
+        "stones": 6350.29,
+        "carats": 2.0,
+        "atomic mass units": 1.66054e-27,
+        "kilograms per cubic meter": 1e3,
+        "grams per cubic centimeter": 1.0,
+        "slugs": 145.038,
+        "newtons": 9.80665,
+        "pennyweights": 1.55517,
+        "troy ounces": 31.1035,
+        "pennyweight": 1.55517,
+        "kips": 4448.22,
+        "kilograms per liter": 1e3,
+        "milligrams per milliliter": 1e-3,
+        "pounds per gallon": 119.826,
+        "stones per cubic meter": 6350.29,
+        "ounces per cubic foot": 0.0283495
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_time(value, from_unit, to_unit):
+    units = {
+        "seconds": 1.0,
+        "minutes": 60.0,
+        "hours": 3600.0,
+        "days": 86400.0,
+        "weeks": 604800.0,
+        "months": 2628000.0,
+        "years": 31536000.0,
+        "milliseconds": 1e-3,
+        "microseconds": 1e-6,
+        "nanoseconds": 1e-9,
+        "fortnights": 1209600.0,
+        "centuries": 3.1536e9,
+        "decades": 3.1536e8,
+        "quarters": 7884000.0,
+        "hours (decimal)": 3600.0,
+        "minutes (decimal)": 60.0,
+        "seconds (decimal)": 1.0,
+        "milliseconds (decimal)": 0.001,
+        "microseconds (decimal)": 1e-6,
+        "nanoseconds (decimal)": 1e-9,
+        "leap years": 31622400.0,
+        "Julian years": 31557600.0
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_density(value, from_unit, to_unit):
+    units = {
+        "kilograms per cubic meter": 1.0,
+        "grams per cubic centimeter": 1e3,
+        "pounds per cubic foot": 16.0185,
+        "ounces per cubic inch": 27.6799,
+        "grams per milliliter": 1e3,
+        "kilograms per liter": 1.0,
+        "pounds per gallon": 8.34,
+        "slugs per cubic foot": 515.4,
+        "kilograms per cubic centimeter": 1e6,
+        "grams per liter": 1e-3,
+        "pounds per cubic meter": 0.06243,
+        "ounces per cubic meter": 0.001807,
+        "tons per cubic meter": 0.907185,
+        "tons per gallon": 0.736
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_force(value, from_unit, to_unit):
+    units = {
+        "newtons": 1.0,
+        "pounds-force": 4.44822,
+        "kilograms-force": 9.80665,
+        "dynes": 1e-5,
+        "ounces-force": 0.278013,
+        "tonnes-force": 9806.65,
+        "poundals": 0.138255,
+        "kilonewtons": 1e3,
+        "meganewtons": 1e6,
+        "giganeutons": 1e9,
+        "kilogram-force per square meter": 9806.65,
+        "newtons per square meter": 1.0,
+        "pounds-force per square meter": 4.44822,
+        "dynes per square meter": 1e-5
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_data(value, from_unit, to_unit):
+    units = {
+        "bytes": 1.0,
+        "kilobytes": 1e3,
+        "megabytes": 1e6,
+        "gigabytes": 1e9,
+        "terabytes": 1e12,
+        "petabytes": 1e15,
+        "exabytes": 1e18,
+        "zettabytes": 1e21,
+        "yottabytes": 1e24,
+        "bits": 1e-3,
+        "kilobits": 1.0,
+        "megabits": 1e3,
+        "gigabits": 1e6,
+        "terabits": 1e9,
+        "petabits": 1e12,
+        "exabits": 1e15,
+        "zettabits": 1e18,
+        "yottabits": 1e21
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
 
 if __name__ == "__main__":
     main()
