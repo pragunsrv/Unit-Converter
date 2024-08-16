@@ -1,99 +1,6 @@
-def convert_length(value, from_unit, to_unit):
-    units = {
-        "meters": 1.0,
-        "kilometers": 1000.0,
-        "centimeters": 0.01,
-        "millimeters": 0.001,
-        "miles": 1609.34,
-        "yards": 0.9144,
-        "feet": 0.3048,
-        "inches": 0.0254,
-        "nautical miles": 1852.0,
-        "micrometers": 1e-6,
-        "nanometers": 1e-9,
-        "picometers": 1e-12,
-        "furlongs": 201.168,
-        "light years": 9.461e15,
-        "astronomical units": 1.496e11,
-        "parsecs": 3.086e16,
-        "angstroms": 1e-10,
-        "rods": 5.0292,
-        "chains": 20.1168,
-        "cubits": 0.4572,
-        "spans": 0.2286,
-        "hands": 0.1016,
-        "palms": 0.0762,
-        "links": 0.201168,
-        "twips": 1.7638888889e-5,
-        "picas": 0.0042175176,
-        "points": 0.0003527778,
-        "astronomical leagues": 4.828e12,
-        "cubits ancient": 0.524,
-        "inches roman": 0.0246,
-        "li chinese": 500.0,
-        "feet greek": 0.308,
-        "paces": 1.524,
-        "ell": 1.143,
-        "spanish feet": 0.278635,
-        "rope": 20.1168,
-        "cubit biblical": 0.4572,
-        "stadion": 192.27,
-        "gerah": 0.0001
-    }
-    if from_unit in units and to_unit in units:
-        return value * (units[to_unit] / units[from_unit])
-    else:
-        return None
-
-def convert_weight(value, from_unit, to_unit):
-    units = {
-        "grams": 1.0,
-        "kilograms": 1000.0,
-        "milligrams": 0.001,
-        "pounds": 453.592,
-        "ounces": 28.3495,
-        "tons": 1e6,
-        "micrograms": 1e-6,
-        "nanograms": 1e-9,
-        "picograms": 1e-12,
-        "stones": 6350.29,
-        "short tons": 907184.74,
-        "long tons": 1016046.91,
-        "carats": 0.2,
-        "grains": 0.06479891,
-        "scruples": 1.2959782,
-        "drams": 1.7718451953125,
-        "apothecaries ounces": 31.1034768,
-        "pennyweights": 1.55517384,
-        "troy ounces": 31.1034768,
-        "metric tons": 1e6,
-        "slugs": 14593.903,
-        "quintals": 100000.0,
-        "hundredweights": 50802.34544,
-        "quarters": 12700.58636,
-        "grains troy": 0.06479891,
-        "poundals": 14.593903,
-        "scruples apothecary": 1.2959782,
-        "bales": 40000.0,
-        "talents": 26000.0,
-        "shekels": 11.34,
-        "pyramids": 53592.0,
-        "chinese pounds": 453.6,
-        "candareens": 0.37793,
-        "mommes": 3.75,
-        "taels": 37.5,
-        "stone uk": 6350.29318,
-        "ounces uk": 28.3495231,
-        "tons uk": 1016046.9088
-    }
-    if from_unit in units and to_unit in units:
-        return value * (units[to_unit] / units[from_unit])
-    else:
-        return None
-
 def convert_temperature(value, from_unit, to_unit):
     if from_unit == "celsius" and to_unit == "fahrenheit":
-        return (value * 9/5) + 32
+        return value * 9/5 + 32
     elif from_unit == "fahrenheit" and to_unit == "celsius":
         return (value - 32) * 5/9
     elif from_unit == "celsius" and to_unit == "kelvin":
@@ -106,64 +13,32 @@ def convert_temperature(value, from_unit, to_unit):
         return (value - 273.15) * 9/5 + 32
     elif from_unit == "celsius" and to_unit == "rankine":
         return (value + 273.15) * 9/5
-    elif from_unit == "fahrenheit" and to_unit == "rankine":
-        return value + 459.67
-    elif from_unit == "kelvin" and to_unit == "rankine":
-        return value * 9/5
     elif from_unit == "rankine" and to_unit == "celsius":
         return (value - 491.67) * 5/9
+    elif from_unit == "fahrenheit" and to_unit == "rankine":
+        return value + 459.67
     elif from_unit == "rankine" and to_unit == "fahrenheit":
         return value - 459.67
+    elif from_unit == "kelvin" and to_unit == "rankine":
+        return value * 9/5
     elif from_unit == "rankine" and to_unit == "kelvin":
         return value * 5/9
     elif from_unit == "celsius" and to_unit == "delisle":
         return (100 - value) * 3/2
-    elif from_unit == "fahrenheit" and to_unit == "delisle":
-        return (212 - value) * 5/6
-    elif from_unit == "kelvin" and to_unit == "delisle":
-        return (373.15 - value) * 3/2
-    elif from_unit == "rankine" and to_unit == "delisle":
-        return (671.67 - value) * 5/6
     elif from_unit == "delisle" and to_unit == "celsius":
         return 100 - value * 2/3
+    elif from_unit == "fahrenheit" and to_unit == "delisle":
+        return (212 - value) * 5/6
     elif from_unit == "delisle" and to_unit == "fahrenheit":
         return 212 - value * 6/5
+    elif from_unit == "kelvin" and to_unit == "delisle":
+        return (373.15 - value) * 3/2
     elif from_unit == "delisle" and to_unit == "kelvin":
         return 373.15 - value * 2/3
+    elif from_unit == "rankine" and to_unit == "delisle":
+        return (671.67 - value) * 5/6
     elif from_unit == "delisle" and to_unit == "rankine":
         return 671.67 - value * 6/5
-    elif from_unit == "celsius" and to_unit == "reaumur":
-        return value * 4/5
-    elif from_unit == "fahrenheit" and to_unit == "reaumur":
-        return (value - 32) * 4/9
-    elif from_unit == "kelvin" and to_unit == "reaumur":
-        return (value - 273.15) * 4/5
-    elif from_unit == "rankine" and to_unit == "reaumur":
-        return (value - 491.67) * 4/9
-    elif from_unit == "delisle" and to_unit == "reaumur":
-        return (100 - value * 5/4) * 3/2
-    elif from_unit == "reaumur" and to_unit == "celsius":
-        return value * 5/4
-    elif from_unit == "reaumur" and to_unit == "fahrenheit":
-        return (value * 9/4) + 32
-    elif from_unit == "reaumur" and to_unit == "kelvin":
-        return (value * 5/4) + 273.15
-    elif from_unit == "reaumur" and to_unit == "rankine":
-        return (value * 9/4) + 491.67
-    elif from_unit == "reaumur" and to_unit == "delisle":
-        return (100 - value * 5/4) * 3/2
-    elif from_unit == "kelvin" and to_unit == "newton":
-        return (value - 273.15) * 0.33
-    elif from_unit == "newton" and to_unit == "kelvin":
-        return value * 100/33 + 273.15
-    elif from_unit == "fahrenheit" and to_unit == "newton":
-        return (value - 32) * 0.18333
-    elif from_unit == "newton" and to_unit == "fahrenheit":
-        return value * 100/33 * 1.8 + 32
-    elif from_unit == "celsius" and to_unit == "newton":
-        return value * 0.33
-    elif from_unit == "newton" and to_unit == "celsius":
-        return value * 100/33
     else:
         return None
 
@@ -197,7 +72,16 @@ def convert_area(value, from_unit, to_unit):
         "square decimeters": 0.01,
         "square decameters": 100.0,
         "square hectometers": 10000.0,
-        "acres ancient": 4046.8564224
+        "acres ancient": 4046.8564224,
+        "circular millimeters": 7.854e-10,
+        "square solar systems": 2.78e29,
+        "square light years": 8.464e35,
+        "square parsecs": 2.612e36,
+        "square astronomical units": 2.77e23,
+        "square kiloparsecs": 6.7e41,
+        "square megaparsecs": 4.49e49,
+        "square gigaparsecs": 2.47e57,
+        "square teraparsecs": 1.52e65
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -240,7 +124,21 @@ def convert_volume(value, from_unit, to_unit):
         "tablespoons uk": 0.0177582,
         "teaspoons uk": 0.00591939,
         "fluid scruples": 0.0028413,
-        "fluid drams": 0.0343613
+        "fluid drams": 0.0343613,
+        "liters per minute": 1.0,
+        "cubic meters per hour": 1000.0,
+        "milliliters per second": 0.001,
+        "barrels per day": 158.987,
+        "gallons per minute": 3.78541,
+        "cups per hour": 0.24,
+        "pints per second": 0.473176,
+        "teaspoons per second": 0.00492892,
+        "fluid ounces per hour": 0.0295735,
+        "kiloliters per year": 1e3,
+        "milliliters per year": 1e-3,
+        "cubic centimeters per minute": 0.001,
+        "deciliters per day": 0.1,
+        "centiliters per second": 0.01
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -265,79 +163,24 @@ def convert_speed(value, from_unit, to_unit):
         "links per hour": 0.00127,
         "hands per second": 0.1016,
         "paces per second": 0.762,
-        "light years per millennium": 9.461e12,
-        "fathoms per minute": 0.03048
-    }
-    if from_unit in units and to_unit in units:
-        return value * (units[to_unit] / units[from_unit])
-    else:
-        return None
-
-def convert_time(value, from_unit, to_unit):
-    units = {
-        "seconds": 1.0,
-        "minutes": 60.0,
-        "hours": 3600.0,
-        "days": 86400.0,
-        "weeks": 604800.0,
-        "fortnights": 1209600.0,
-        "months": 2.63e6,
-        "years": 3.154e7,
-        "decades": 3.154e8,
-        "centuries": 3.154e9,
-        "millennia": 3.154e10,
-        "plank time": 5.39e-44,
-        "shakes": 1e-8,
-        "jiffies": 0.01,
-        "microfortnights": 1.2096,
-        "femtoseconds": 1e-15,
-        "picoseconds": 1e-12,
-        "nanoseconds": 1e-9,
-        "microseconds": 1e-6,
-        "milliseconds": 1e-3,
-        "centiseconds": 1e-2,
-        "decaseconds": 10.0,
-        "hectoseconds": 100.0,
-        "kiloseconds": 1000.0
-    }
-    if from_unit in units and to_unit in units:
-        return value * (units[to_unit] / units[from_unit])
-    else:
-        return None
-
-def convert_energy(value, from_unit, to_unit):
-    units = {
-        "joules": 1.0,
-        "kilojoules": 1000.0,
-        "calories": 4.184,
-        "kilocalories": 4184.0,
-        "watt-hours": 3600.0,
-        "kilowatt-hours": 3.6e6,
-        "ergs": 1e-7,
-        "british thermal units": 1055.06,
-        "foot-pounds": 1.35582,
-        "electronvolts": 1.60218e-19,
-        "tons of tnt": 4.184e9,
-        "therms": 1.05506e8,
-        "horsepower-hours": 2.68452e6,
-        "joules per kilogram": 1.0,
-        "kilojoules per kilogram": 1000.0,
-        "calories per gram": 4.184,
-        "calories per kilogram": 4184.0,
-        "british thermal units per pound": 2326.0,
-        "tonnes of tnt": 4.184e12,
-        "kilotons of tnt": 4.184e15,
-        "megatons of tnt": 4.184e18,
-        "gigatons of tnt": 4.184e21,
-        "teratons of tnt": 4.184e24,
-        "petatons of tnt": 4.184e27,
-        "exatons of tnt": 4.184e30,
-        "zettatons of tnt": 4.184e33,
-        "yottatons of tnt": 4.184e36,
-        "joules per mole": 1.0,
-        "kilojoules per mole": 1000.0,
-        "calories per mole": 4.184,
-        "kilocalories per mole": 4184.0
+        "light years per millennium": 9.4607e12,
+        "astronomical units per century": 1.5e12,
+        "gigameters per year": 3.154e19,
+        "terameters per decade": 3.154e16,
+        "fathoms per minute": 0.18288,
+        "roods per day": 0.0001454,
+        "stadia per hour": 0.009144,
+        "sverdrups per year": 3.154e9,
+        "gallons per minute": 0.227,
+        "cups per second": 0.06,
+        "hectometers per second": 0.01,
+        "kilometers per minute": 0.0166667,
+        "megameters per year": 3.154e15,
+        "parsecs per day": 2.659e13,
+        "light minutes per hour": 0.0010793,
+        "tangents per hour": 0.004,
+        "knots per hour": 0.514444,
+        "mph per day": 0.44704
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -348,9 +191,30 @@ def convert_pressure(value, from_unit, to_unit):
     units = {
         "pascals": 1.0,
         "kilopascals": 1000.0,
-        "bar": 100000.0,
+        "megapascals": 1e6,
+        "gigapascals": 1e9,
+        "bar": 1e5,
         "atmospheres": 101325.0,
-        "millimeters of mercury": 133.322,
+        "torr": 133.322,
+        "inches of mercury": 3396.98,
+        "pounds per square inch": 6894.76,
+        "kgf per square centimeter": 98066.5,
+        "newtons per square meter": 1.0,
+        "dynes per square centimeter": 0.001,
+        "pounds per square foot": 4788.02,
+        "kgf per square meter": 9.80665,
+        "newtons per square centimeter": 100000.0,
+        "newtons per square millimeter": 1e6,
+        "pascals per square millimeter": 1e6,
+        "pascals per square inch": 6894.76,
+        "barometric pressure": 101325.0,
+        "centimeters of water": 98.0665,
+        "inches of water": 249.088,
+        "millibars": 100.0,
+        "hectopascals": 100.0,
+        "newtons per square foot": 4788.02,
+        "inches of water": 249.088,
+        "centimeters of mercury": 133.322,
         "inches of mercury": 3396.98,
         "pounds per square inch": 6894.76,
         "kgf per square centimeter": 98066.5,
@@ -398,7 +262,23 @@ def convert_power(value, from_unit, to_unit):
         "horsepower-hours per year": 6112125.0,
         "foot-pounds per minute": 81.49,
         "calories per hour": 150.0,
-        "kilocalories per hour": 1500.0
+        "kilocalories per hour": 1500.0,
+        "watts per square meter": 1.0,
+        "kilowatts per square meter": 0.001,
+        "megawatts per square meter": 1e-6,
+        "gigawatts per square meter": 1e-9,
+        "terawatts per square meter": 1e-12,
+        "joules per square meter": 1.0,
+        "ergs per square meter": 1e-7,
+        "foot-pounds per square meter": 1.35582,
+        "calories per square meter": 4.184,
+        "kilocalories per square meter": 4184.0,
+        "horsepower per unit area": 745.7,
+        "watts per unit volume": 1.0,
+        "kilowatts per unit volume": 0.001,
+        "megawatts per unit volume": 1e-6,
+        "gigawatts per unit volume": 1e-9,
+        "terawatts per unit volume": 1e-12
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -428,40 +308,173 @@ def convert_voltage(value, from_unit, to_unit):
         "electrostatic potential": 1.0,
         "battery voltage": 1.5,
         "car battery voltage": 12.0,
-        "solar panel voltage": 36.0
+        "solar panel voltage": 36.0,
+        "volts per meter": 1.0,
+        "kilovolts per meter": 1000.0,
+        "megavolts per meter": 1e6,
+        "microvolts per meter": 1e-6,
+        "nanovolts per meter": 1e-9,
+        "picovolts per meter": 1e-12,
+        "volt per unit length": 1.0,
+        "kilovolt per unit length": 1000.0,
+        "megavolt per unit length": 1e6,
+        "microvolt per unit length": 1e-6,
+        "nanovolt per unit length": 1e-9,
+        "picovolt per unit length": 1e-12,
+        "volts per square meter": 1.0,
+        "kilovolts per square meter": 1000.0,
+        "megavolts per square meter": 1e6,
+        "microvolts per square meter": 1e-6,
+        "nanovolts per square meter": 1e-9,
+        "picovolts per square meter": 1e-12,
+        "volts per unit volume": 1.0,
+        "kilovolts per unit volume": 1000.0,
+        "megavolts per unit volume": 1e6,
+        "microvolts per unit volume": 1e-6,
+        "nanovolts per unit volume": 1e-9,
+        "picovolts per unit volume": 1e-12
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
     else:
         return None
 
-def convert_current(value, from_unit, to_unit):
+def convert_energy(value, from_unit, to_unit):
     units = {
-        "amperes": 1.0,
-        "milliamperes": 0.001,
-        "microamperes": 1e-6,
-        "nanoamperes": 1e-9,
-        "picoamperes": 1e-12,
-        "kiloamperes": 1000.0,
-        "megaamperes": 1e6,
-        "gigaamperes": 1e9,
-        "centiamperes": 0.01,
-        "deciamperes": 0.1,
-        "decaamperes": 10.0,
-        "hectoamperes": 100.0,
-        "ampere-hours": 3600.0,
-        "milliampere-hours": 3.6,
-        "microampere-hours": 3.6e-3,
-        "ampere-seconds": 1.0,
-        "milliampere-seconds": 0.001,
-        "microampere-seconds": 1e-6,
-        "coulombs": 1.0,
-        "electric current": 1.0,
-        "current density": 1.0,
-        "magnetomotive force": 1.0,
-        "electric charge": 1.0
+        "joules": 1.0,
+        "kilojoules": 1000.0,
+        "megajoules": 1e6,
+        "gigajoules": 1e9,
+        "terajoules": 1e12,
+        "calories": 4.184,
+        "kilocalories": 4184.0,
+        "british thermal units": 1055.06,
+        "foot-pounds": 1.35582,
+        "electronvolts": 1.602e-19,
+        "watt-hours": 3600.0,
+        "kilowatt-hours": 3.6e6,
+        "megawatt-hours": 3.6e9,
+        "gigawatt-hours": 3.6e12,
+        "terawatt-hours": 3.6e15,
+        "watt-seconds": 1.0,
+        "kilowatt-seconds": 1000.0,
+        "megawatt-seconds": 1e6,
+        "gigawatt-seconds": 1e9,
+        "terawatt-seconds": 1e12,
+        "therms": 105505585.0,
+        "calories per second": 4.184,
+        "calories per minute": 250.0,
+        "calories per hour": 15000.0,
+        "kilocalories per second": 4184.0,
+        "kilocalories per minute": 250000.0,
+        "kilocalories per hour": 15000000.0,
+        "megajoules per second": 1e6,
+        "megajoules per minute": 6e7,
+        "megajoules per hour": 3.6e9,
+        "gigajoules per second": 1e9,
+        "gigajoules per minute": 6e10,
+        "gigajoules per hour": 3.6e12
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
     else:
         return None
+
+def convert_frequency(value, from_unit, to_unit):
+    units = {
+        "hertz": 1.0,
+        "kilohertz": 1e3,
+        "megahertz": 1e6,
+        "gigahertz": 1e9,
+        "terahertz": 1e12,
+        "revolutions per second": 1.0,
+        "revolutions per minute": 0.0166667,
+        "cycles per second": 1.0,
+        "cycles per minute": 0.0166667,
+        "rpm": 0.0166667,
+        "beats per minute": 0.0166667,
+        "oscillations per second": 1.0,
+        "pulses per second": 1.0,
+        "wavelength per second": 1.0,
+        "frequency per second": 1.0,
+        "hertz per second": 1.0,
+        "kilohertz per second": 1e3,
+        "megahertz per second": 1e6,
+        "gigahertz per second": 1e9,
+        "terahertz per second": 1e12,
+        "cpm": 0.0166667,
+        "hz": 1.0,
+        "kHz": 1e3,
+        "MHz": 1e6,
+        "GHz": 1e9,
+        "THz": 1e12,
+        "rotations per minute": 0.0166667,
+        "vibrations per second": 1.0,
+        "oscillations per minute": 0.0166667,
+        "pulses per minute": 0.0166667,
+        "sound waves per second": 1.0,
+        "sound waves per minute": 0.0166667,
+        "cycles per hour": 0.000277778,
+        "oscillations per hour": 0.000277778,
+        "hertz per hour": 0.000277778,
+        "kilohertz per hour": 0.277778,
+        "megahertz per hour": 277.778,
+        "gigahertz per hour": 277778.0
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def main():
+    while True:
+        print("Select conversion type:")
+        print("1. Temperature")
+        print("2. Area")
+        print("3. Volume")
+        print("4. Speed")
+        print("5. Pressure")
+        print("6. Power")
+        print("7. Voltage")
+        print("8. Energy")
+        print("9. Frequency")
+        print("0. Exit")
+        
+        choice = input("Enter choice (0-9): ")
+        
+        if choice == "0":
+            break
+        
+        value = float(input("Enter value to convert: "))
+        from_unit = input("Enter from unit: ").lower()
+        to_unit = input("Enter to unit: ").lower()
+        
+        if choice == "1":
+            result = convert_temperature(value, from_unit, to_unit)
+        elif choice == "2":
+            result = convert_area(value, from_unit, to_unit)
+        elif choice == "3":
+            result = convert_volume(value, from_unit, to_unit)
+        elif choice == "4":
+            result = convert_speed(value, from_unit, to_unit)
+        elif choice == "5":
+            result = convert_pressure(value, from_unit, to_unit)
+        elif choice == "6":
+            result = convert_power(value, from_unit, to_unit)
+        elif choice == "7":
+            result = convert_voltage(value, from_unit, to_unit)
+        elif choice == "8":
+            result = convert_energy(value, from_unit, to_unit)
+        elif choice == "9":
+            result = convert_frequency(value, from_unit, to_unit)
+        else:
+            print("Invalid choice")
+            continue
+        
+        if result is not None:
+            print(f"Converted value: {result}")
+        else:
+            print("Invalid units")
+
+if __name__ == "__main__":
+    main()
