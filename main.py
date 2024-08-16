@@ -14,7 +14,9 @@ def convert_length(value, from_unit, to_unit):
         "picometers": 1e-12,
         "furlongs": 201.168,
         "light years": 9.461e15,
-        "astronomical units": 1.496e11
+        "astronomical units": 1.496e11,
+        "parsecs": 3.086e16,
+        "angstroms": 1e-10
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -34,7 +36,9 @@ def convert_weight(value, from_unit, to_unit):
         "picograms": 1e-12,
         "stones": 6350.29,
         "short tons": 907184.74,
-        "long tons": 1016046.91
+        "long tons": 1016046.91,
+        "carats": 0.2,
+        "grains": 0.06479891
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -66,6 +70,22 @@ def convert_temperature(value, from_unit, to_unit):
         return value - 459.67
     elif from_unit == "rankine" and to_unit == "kelvin":
         return value * 5/9
+    elif from_unit == "celsius" and to_unit == "delisle":
+        return (100 - value) * 3/2
+    elif from_unit == "fahrenheit" and to_unit == "delisle":
+        return (212 - value) * 5/6
+    elif from_unit == "kelvin" and to_unit == "delisle":
+        return (373.15 - value) * 3/2
+    elif from_unit == "rankine" and to_unit == "delisle":
+        return (671.67 - value) * 5/6
+    elif from_unit == "delisle" and to_unit == "celsius":
+        return 100 - value * 2/3
+    elif from_unit == "delisle" and to_unit == "fahrenheit":
+        return 212 - value * 6/5
+    elif from_unit == "delisle" and to_unit == "kelvin":
+        return 373.15 - value * 2/3
+    elif from_unit == "delisle" and to_unit == "rankine":
+        return 671.67 - value * 6/5
     else:
         return None
 
@@ -84,7 +104,8 @@ def convert_area(value, from_unit, to_unit):
         "square nautical miles": 3.429e6,
         "square micrometers": 1e-12,
         "square nanometers": 1e-18,
-        "square picometers": 1e-24
+        "square picometers": 1e-24,
+        "barns": 1e-28
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -111,7 +132,9 @@ def convert_volume(value, from_unit, to_unit):
         "cubic yards": 0.764555,
         "cubic nanometers": 1e-27,
         "cubic micrometers": 1e-18,
-        "cubic furlongs": 8.64554858e7
+        "cubic furlongs": 8.64554858e7,
+        "cubic angstroms": 1e-30,
+        "cubic barns": 1e-84
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -132,7 +155,34 @@ def convert_speed(value, from_unit, to_unit):
         "millimeters per second": 0.001,
         "centimeters per second": 0.01,
         "micrometers per second": 1e-6,
-        "nanometers per second": 1e-9
+        "nanometers per second": 1e-9,
+        "leagues per hour": 0.277778,
+        "furlongs per fortnight": 0.00016630952
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_time(value, from_unit, to_unit):
+    units = {
+        "seconds": 1.0,
+        "minutes": 60.0,
+        "hours": 3600.0,
+        "days": 86400.0,
+        "weeks": 604800.0,
+        "months": 2.63e6,
+        "years": 3.154e7,
+        "milliseconds": 1e-3,
+        "microseconds": 1e-6,
+        "nanoseconds": 1e-9,
+        "picoseconds": 1e-12,
+        "femtoseconds": 1e-15,
+        "attoseconds": 1e-18,
+        "fortnights": 1.2096e6,
+        "centuries": 3.154e9,
+        "millennia": 3.154e10,
+        "plank time": 5.39e-44
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -140,12 +190,13 @@ def convert_speed(value, from_unit, to_unit):
         return None
 
 def main():
-    print("Length Conversion: 5 meters to kilometers:", convert_length(5, "meters", "kilometers"))
-    print("Weight Conversion: 5000 grams to kilograms:", convert_weight(5000, "grams", "kilograms"))
-    print("Temperature Conversion: 100 celsius to fahrenheit:", convert_temperature(100, "celsius", "fahrenheit"))
-    print("Area Conversion: 1000 square meters to hectares:", convert_area(1000, "square meters", "hectares"))
-    print("Volume Conversion: 2 liters to cubic meters:", convert_volume(2, "liters", "cubic meters"))
-    print("Speed Conversion: 60 miles per hour to meters per second:", convert_speed(60, "miles per hour", "meters per second"))
+    print("Length Conversion: 10 light years to parsecs:", convert_length(10, "light years", "parsecs"))
+    print("Weight Conversion: 5000 grams to carats:", convert_weight(5000, "grams", "carats"))
+    print("Temperature Conversion: 100 celsius to delisle:", convert_temperature(100, "celsius", "delisle"))
+    print("Area Conversion: 500 square kilometers to square miles:", convert_area(500, "square kilometers", "square miles"))
+    print("Volume Conversion: 10 liters to cubic barns:", convert_volume(10, "liters", "cubic barns"))
+    print("Speed Conversion: 100 knots to leagues per hour:", convert_speed(100, "knots", "leagues per hour"))
+    print("Time Conversion: 1 year to fortnights:", convert_time(1, "years", "fortnights"))
 
 if __name__ == "__main__":
     main()
