@@ -26,7 +26,19 @@ def convert_length(value, from_unit, to_unit):
         "links": 0.201168,
         "twips": 1.7638888889e-5,
         "picas": 0.0042175176,
-        "points": 0.0003527778
+        "points": 0.0003527778,
+        "astronomical leagues": 4.828e12,
+        "cubits ancient": 0.524,
+        "inches roman": 0.0246,
+        "li chinese": 500.0,
+        "feet greek": 0.308,
+        "paces": 1.524,
+        "ell": 1.143,
+        "spanish feet": 0.278635,
+        "rope": 20.1168,
+        "cubit biblical": 0.4572,
+        "stadion": 192.27,
+        "gerah": 0.0001
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -59,7 +71,20 @@ def convert_weight(value, from_unit, to_unit):
         "quintals": 100000.0,
         "hundredweights": 50802.34544,
         "quarters": 12700.58636,
-        "grains troy": 0.06479891
+        "grains troy": 0.06479891,
+        "poundals": 14.593903,
+        "scruples apothecary": 1.2959782,
+        "bales": 40000.0,
+        "talents": 26000.0,
+        "shekels": 11.34,
+        "pyramids": 53592.0,
+        "chinese pounds": 453.6,
+        "candareens": 0.37793,
+        "mommes": 3.75,
+        "taels": 37.5,
+        "stone uk": 6350.29318,
+        "ounces uk": 28.3495231,
+        "tons uk": 1016046.9088
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -116,7 +141,7 @@ def convert_temperature(value, from_unit, to_unit):
     elif from_unit == "rankine" and to_unit == "reaumur":
         return (value - 491.67) * 4/9
     elif from_unit == "delisle" and to_unit == "reaumur":
-        return (100 - value * 2/3) * 4/5
+        return (100 - value * 5/4) * 3/2
     elif from_unit == "reaumur" and to_unit == "celsius":
         return value * 5/4
     elif from_unit == "reaumur" and to_unit == "fahrenheit":
@@ -127,6 +152,18 @@ def convert_temperature(value, from_unit, to_unit):
         return (value * 9/4) + 491.67
     elif from_unit == "reaumur" and to_unit == "delisle":
         return (100 - value * 5/4) * 3/2
+    elif from_unit == "kelvin" and to_unit == "newton":
+        return (value - 273.15) * 0.33
+    elif from_unit == "newton" and to_unit == "kelvin":
+        return value * 100/33 + 273.15
+    elif from_unit == "fahrenheit" and to_unit == "newton":
+        return (value - 32) * 0.18333
+    elif from_unit == "newton" and to_unit == "fahrenheit":
+        return value * 100/33 * 1.8 + 32
+    elif from_unit == "celsius" and to_unit == "newton":
+        return value * 0.33
+    elif from_unit == "newton" and to_unit == "celsius":
+        return value * 100/33
     else:
         return None
 
@@ -136,24 +173,31 @@ def convert_area(value, from_unit, to_unit):
         "square kilometers": 1e6,
         "square centimeters": 0.0001,
         "square millimeters": 1e-6,
-        "hectares": 1e4,
         "square miles": 2.59e6,
         "acres": 4046.86,
+        "hectares": 10000.0,
         "square yards": 0.836127,
         "square feet": 0.092903,
         "square inches": 0.00064516,
-        "square nautical miles": 3.429e6,
         "square micrometers": 1e-12,
         "square nanometers": 1e-18,
         "square picometers": 1e-24,
-        "barns": 1e-28,
-        "roods": 1011.7141056,
-        "square chains": 404.68564224,
-        "square rods": 25.29285264,
+        "square rods": 25.2929,
         "square furlongs": 404685.64224,
-        "sections": 2.59e6,
-        "arpents": 3418.8924,
-        "cuerdas": 3930.395625
+        "square leagues": 2.591e12,
+        "square chains": 404.68564224,
+        "ares": 100.0,
+        "square perches": 25.2929,
+        "circular inches": 0.0005067075,
+        "homesteads": 647497.027584,
+        "sections": 2.58998811e6,
+        "roods": 1011.7141056,
+        "virgates": 12000.0,
+        "oxgangs": 12000.0,
+        "square decimeters": 0.01,
+        "square decameters": 100.0,
+        "square hectometers": 10000.0,
+        "acres ancient": 4046.8564224
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -162,41 +206,41 @@ def convert_area(value, from_unit, to_unit):
 
 def convert_volume(value, from_unit, to_unit):
     units = {
-        "cubic meters": 1.0,
-        "liters": 0.001,
-        "milliliters": 1e-6,
-        "cubic centimeters": 1e-6,
-        "cubic millimeters": 1e-9,
-        "cubic inches": 0.000016387064,
-        "cubic feet": 0.0283168,
-        "cubic yards": 0.764555,
-        "cubic miles": 4.168e9,
-        "cubic nautical miles": 3.43e9,
+        "liters": 1.0,
+        "milliliters": 0.001,
+        "cubic meters": 1000.0,
+        "cubic centimeters": 0.001,
+        "cubic millimeters": 1e-6,
+        "cubic inches": 0.0163871,
+        "cubic feet": 28.3168,
+        "cubic yards": 764.555,
+        "cubic miles": 4.168e12,
+        "cubic nautical miles": 3.43e12,
         "cubic light years": 8.467e47,
         "cubic parsecs": 2.938e49,
-        "teaspoons": 0.00000492892,
-        "tablespoons": 0.0000147868,
-        "fluid ounces": 0.0000295735,
-        "cups": 0.00024,
-        "pints": 0.000473176,
-        "quarts": 0.000946353,
-        "gallons": 0.00378541,
-        "barrels": 0.158987,
-        "hogsheads": 0.238481,
-        "firkins": 0.034318,
-        "puncheons": 0.477703,
-        "butts": 0.636503,
-        "tuns": 0.953506,
-        "cords": 3.624556,
-        "drams": 0.00369669,
-        "gills": 0.000118294,
-        "shots": 0.0000443603,
-        "gills uk": 0.000142065,
-        "fluid ounces uk": 0.0000284131,
-        "tablespoons uk": 0.0000177582,
-        "teaspoons uk": 0.00000591939,
-        "fluid scruples": 0.0000028413,
-        "fluid drams": 0.0000343613
+        "teaspoons": 0.00492892,
+        "tablespoons": 0.0147868,
+        "fluid ounces": 0.0295735,
+        "cups": 0.24,
+        "pints": 0.473176,
+        "quarts": 0.946353,
+        "gallons": 3.78541,
+        "barrels": 158.987,
+        "hogsheads": 238.481,
+        "firkins": 34.318,
+        "puncheons": 477.703,
+        "butts": 636.503,
+        "tuns": 953.506,
+        "cords": 3624.556,
+        "drams": 3.69669,
+        "gills": 0.118294,
+        "shots": 0.0443603,
+        "gills uk": 0.142065,
+        "fluid ounces uk": 0.0284131,
+        "tablespoons uk": 0.0177582,
+        "teaspoons uk": 0.00591939,
+        "fluid scruples": 0.0028413,
+        "fluid drams": 0.0343613
     }
     if from_unit in units and to_unit in units:
         return value * (units[to_unit] / units[from_unit])
@@ -218,7 +262,7 @@ def convert_speed(value, from_unit, to_unit):
         "furlongs per fortnight": 0.0001663,
         "cubits per second": 0.4572,
         "chains per hour": 0.0127,
-        "links per hour": 0.000127,
+        "links per hour": 0.00127,
         "hands per second": 0.1016,
         "paces per second": 0.762,
         "light years per millennium": 9.461e12,
@@ -300,15 +344,124 @@ def convert_energy(value, from_unit, to_unit):
     else:
         return None
 
-def main():
-    print("Length Conversion: 10 light years to parsecs:", convert_length(10, "light years", "parsecs"))
-    print("Weight Conversion: 5000 grams to carats:", convert_weight(5000, "grams", "carats"))
-    print("Temperature Conversion: 100 celsius to delisle:", convert_temperature(100, "celsius", "delisle"))
-    print("Area Conversion: 500 square kilometers to square miles:", convert_area(500, "square kilometers", "square miles"))
-    print("Volume Conversion: 10 liters to cubic barns:", convert_volume(10, "liters", "cubic barns"))
-    print("Speed Conversion: 100 knots to leagues per hour:", convert_speed(100, "knots", "leagues per hour"))
-    print("Time Conversion: 1 year to fortnights:", convert_time(1, "years", "fortnights"))
-    print("Energy Conversion: 1 megaton of TNT to joules:", convert_energy(1, "megatons of tnt", "joules"))
+def convert_pressure(value, from_unit, to_unit):
+    units = {
+        "pascals": 1.0,
+        "kilopascals": 1000.0,
+        "bar": 100000.0,
+        "atmospheres": 101325.0,
+        "millimeters of mercury": 133.322,
+        "inches of mercury": 3396.98,
+        "pounds per square inch": 6894.76,
+        "kgf per square centimeter": 98066.5,
+        "newtons per square meter": 1.0,
+        "dynes per square centimeter": 0.001,
+        "pounds per square foot": 4788.02,
+        "kgf per square meter": 9.80665,
+        "newtons per square centimeter": 100000.0,
+        "newtons per square millimeter": 1e6,
+        "pascals per square millimeter": 1e6,
+        "pascals per square inch": 6894.76,
+        "barometric pressure": 101325.0,
+        "centimeters of water": 98.0665,
+        "inches of water": 249.088,
+        "millibars": 100.0,
+        "hectopascals": 100.0
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
 
-if __name__ == "__main__":
-    main()
+def convert_power(value, from_unit, to_unit):
+    units = {
+        "watts": 1.0,
+        "kilowatts": 1000.0,
+        "megawatts": 1e6,
+        "gigawatts": 1e9,
+        "terawatts": 1e12,
+        "horsepower": 745.7,
+        "foot-pounds per second": 1.35582,
+        "calories per second": 4.184,
+        "kilocalories per second": 4184.0,
+        "joules per second": 1.0,
+        "ergs per second": 1e-7,
+        "watt-hours per day": 86400.0,
+        "watt-hours per year": 8766000.0,
+        "kilowatt-hours per day": 86.4,
+        "kilowatt-hours per year": 8766.0,
+        "megawatt-hours per day": 0.0864,
+        "megawatt-hours per year": 8.766,
+        "gigawatt-hours per day": 0.0000864,
+        "gigawatt-hours per year": 0.031536,
+        "horsepower-hours per day": 16725.0,
+        "horsepower-hours per year": 6112125.0,
+        "foot-pounds per minute": 81.49,
+        "calories per hour": 150.0,
+        "kilocalories per hour": 1500.0
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_voltage(value, from_unit, to_unit):
+    units = {
+        "volts": 1.0,
+        "millivolts": 0.001,
+        "kilovolts": 1000.0,
+        "megavolts": 1e6,
+        "microvolts": 1e-6,
+        "nanovolts": 1e-9,
+        "picovolts": 1e-12,
+        "statvolts": 299.792458,
+        "abvolts": 1e-8,
+        "centivolts": 0.01,
+        "decivolts": 0.1,
+        "decalvolts": 10.0,
+        "hectovolts": 100.0,
+        "kilovolt-meters": 1000.0,
+        "volt-amperes": 1.0,
+        "volt-coulombs": 1.0,
+        "volt-seconds": 1.0,
+        "electromotive force": 1.0,
+        "electrostatic potential": 1.0,
+        "battery voltage": 1.5,
+        "car battery voltage": 12.0,
+        "solar panel voltage": 36.0
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_current(value, from_unit, to_unit):
+    units = {
+        "amperes": 1.0,
+        "milliamperes": 0.001,
+        "microamperes": 1e-6,
+        "nanoamperes": 1e-9,
+        "picoamperes": 1e-12,
+        "kiloamperes": 1000.0,
+        "megaamperes": 1e6,
+        "gigaamperes": 1e9,
+        "centiamperes": 0.01,
+        "deciamperes": 0.1,
+        "decaamperes": 10.0,
+        "hectoamperes": 100.0,
+        "ampere-hours": 3600.0,
+        "milliampere-hours": 3.6,
+        "microampere-hours": 3.6e-3,
+        "ampere-seconds": 1.0,
+        "milliampere-seconds": 0.001,
+        "microampere-seconds": 1e-6,
+        "coulombs": 1.0,
+        "electric current": 1.0,
+        "current density": 1.0,
+        "magnetomotive force": 1.0,
+        "electric charge": 1.0
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
