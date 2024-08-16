@@ -638,5 +638,318 @@ def convert_data(value, from_unit, to_unit):
     else:
         return None
 
+def convert_pressure(value, from_unit, to_unit):
+    units = {
+        "pascals": 1.0,
+        "kilopascals": 1e3,
+        "hectopascals": 1e2,
+        "bar": 1e5,
+        "atmospheres": 101325.0,
+        "psi": 6894.76,
+        "torr": 133.322,
+        "mmHg": 133.322,
+        "inHg": 3386.39,
+        "dynes per square centimeter": 0.1,
+        "pounds per square inch": 6894.76,
+        "kgf per square meter": 9806.65,
+        "kgf per square centimeter": 98066.5,
+        "mpa": 1e6,
+        "psi (US)": 6894.76,
+        "psi (UK)": 6894.76,
+        "kilogram-force per square centimeter": 98066.5,
+        "newtons per square meter": 1.0,
+        "megapascals": 1e6,
+        "gigapascals": 1e9,
+        "hydrostatic pressure": 9810.0,
+        "gauge pressure": 101325.0,
+        "absolute pressure": 101325.0,
+        "differential pressure": 101325.0,
+        "vapor pressure": 100000.0,
+        "inches of water": 249.088,
+        "millibars": 100.0,
+        "hectopascals (hPa)": 1e2,
+        "cmHg": 133.322
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_speed(value, from_unit, to_unit):
+    units = {
+        "meters per second": 1.0,
+        "kilometers per hour": 0.277778,
+        "miles per hour": 0.44704,
+        "feet per second": 0.3048,
+        "nautical miles per hour": 0.514444,
+        "centimeters per second": 0.01,
+        "inches per second": 0.0254,
+        "yards per second": 0.9144,
+        "kilometers per second": 0.277778,
+        "miles per second": 0.44704,
+        "feet per minute": 0.00508,
+        "nautical miles per minute": 0.00857,
+        "centimeters per minute": 0.0006,
+        "inches per minute": 0.00102,
+        "yards per minute": 0.01814,
+        "kilometers per hour": 0.277778,
+        "miles per hour": 0.44704,
+        "feet per hour": 0.01814,
+        "nautical miles per hour": 0.514444,
+        "centimeters per hour": 0.00166667,
+        "inches per hour": 0.00101667,
+        "yards per hour": 0.0181,
+        "kilometers per second": 0.277778,
+        "miles per second": 0.44704,
+        "meters per hour": 0.000277778,
+        "feet per hour": 0.0000947
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_power(value, from_unit, to_unit):
+    units = {
+        "watts": 1.0,
+        "kilowatts": 1e3,
+        "megawatts": 1e6,
+        "gigawatts": 1e9,
+        "terawatts": 1e12,
+        "horsepower": 745.7,
+        "BTUs per hour": 0.293071,
+        "calories per second": 4.184,
+        "foot-pounds per minute": 0.0225975,
+        "Joules per second": 1.0,
+        "watts per square meter": 1.0,
+        "kilowatts per square meter": 1e3,
+        "megawatts per square meter": 1e6,
+        "gigawatts per square meter": 1e9,
+        "terawatts per square meter": 1e12,
+        "horsepower (metric)": 735.5,
+        "BTUs per minute": 17.64,
+        "calories per minute": 250.4,
+        "foot-pounds per second": 0.037737,
+        "Joules per minute": 60.0,
+        "watts per hour": 1.0 / 3600.0
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_voltage(value, from_unit, to_unit):
+    units = {
+        "volts": 1.0,
+        "millivolts": 1e-3,
+        "kilovolts": 1e3,
+        "megavolts": 1e6,
+        "gigavolts": 1e9,
+        "microvolts": 1e-6,
+        "nanovolts": 1e-9,
+        "pico volts": 1e-12,
+        "statvolts": 299.792458,
+        "abvolts": 1e-8,
+        "electronvolts": 1.60218e-19,
+        "millielectronvolts": 1.60218e-16,
+        "kiloelectronvolts": 1.60218e-16,
+        "megaelectronvolts": 1.60218e-13,
+        "gigaelectronvolts": 1.60218e-10,
+        "teraelectronvolts": 1.60218e-7,
+        "petaelectronvolts": 1.60218e-4,
+        "exaelectronvolts": 1.60218e-1,
+        "zetaelectronvolts": 1.60218e2,
+        "yottaelectronvolts": 1.60218e5
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_energy(value, from_unit, to_unit):
+    units = {
+        "joules": 1.0,
+        "kilojoules": 1e3,
+        "megajoules": 1e6,
+        "gigajoules": 1e9,
+        "terajoules": 1e12,
+        "calories": 4.184,
+        "kilocalories": 4184.0,
+        "British thermal units": 1055.06,
+        "foot-pounds": 1.35582,
+        "electronvolts": 1.60218e-19,
+        "watt-hours": 3600.0,
+        "kilowatt-hours": 3.6e6,
+        "megawatt-hours": 3.6e9,
+        "gigawatt-hours": 3.6e12,
+        "terawatt-hours": 3.6e15,
+        "petawatt-hours": 3.6e18,
+        "exawatt-hours": 3.6e21,
+        "zettawatt-hours": 3.6e24,
+        "yottawatt-hours": 3.6e27,
+        "joules per second": 1.0,
+        "calories per second": 4.184,
+        "kilocalories per second": 4184.0,
+        "British thermal units per second": 1055.06,
+        "foot-pounds per second": 1.35582
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def convert_frequency(value, from_unit, to_unit):
+    units = {
+        "hertz": 1.0,
+        "kilohertz": 1e3,
+        "megahertz": 1e6,
+        "gigahertz": 1e9,
+        "terahertz": 1e12,
+        "hertz per second": 1e6,
+        "kilohertz per second": 1e9,
+        "megahertz per second": 1e12,
+        "gigahertz per second": 1e15,
+        "terahertz per second": 1e18,
+        "hertz per minute": 0.0166667,
+        "kilohertz per minute": 1e-2,
+        "megahertz per minute": 1e-5,
+        "gigahertz per minute": 1e-8,
+        "terahertz per minute": 1e-11,
+        "hertz per hour": 2.77778e-4,
+        "kilohertz per hour": 2.77778e-7,
+        "megahertz per hour": 2.77778e-10,
+        "gigahertz per hour": 2.77778e-13,
+        "terahertz per hour": 2.77778e-16
+    }
+    if from_unit in units and to_unit in units:
+        return value * (units[to_unit] / units[from_unit])
+    else:
+        return None
+
+def main():
+    while True:
+        print("\nUnit Converter")
+        print("1. Temperature")
+        print("2. Area")
+        print("3. Volume")
+        print("4. Speed")
+        print("5. Pressure")
+        print("6. Power")
+        print("7. Voltage")
+        print("8. Energy")
+        print("9. Frequency")
+        print("10. Exit")
+        print("11. Length")
+        print("12. Mass")
+        print("13. Time")
+        print("14. Density")
+        print("15. Force")
+        print("16. Data")
+        print("17. Voltage (advanced)")
+        print("18. Energy (advanced)")
+        print("19. Pressure (advanced)")
+        print("20. Speed (advanced)")
+        print("21. Frequency (advanced)")
+        print("22. Length (advanced)")
+        print("23. Mass (advanced)")
+        print("24. Time (advanced)")
+        print("25. Density (advanced)")
+        print("26. Force (advanced)")
+        print("27. Data (advanced)")
+        choice = input("Enter your choice: ")
+        if choice == "10":
+            break
+        
+        if choice == "17":
+            print("Advanced Voltage conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_voltage(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "18":
+            print("Advanced Energy conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_energy(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "19":
+            print("Advanced Pressure conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_pressure(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "20":
+            print("Advanced Speed conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_speed(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "21":
+            print("Advanced Frequency conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_frequency(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "22":
+            print("Advanced Length conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_length(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "23":
+            print("Advanced Mass conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_mass(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "24":
+            print("Advanced Time conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_time(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "25":
+            print("Advanced Density conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_density(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "26":
+            print("Advanced Force conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_force(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        elif choice == "27":
+            print("Advanced Data conversion selected.")
+            value = float(input("Enter the value: "))
+            from_unit = input("Enter from unit: ")
+            to_unit = input("Enter to unit: ")
+            result = convert_data(value, from_unit, to_unit)
+            print(f"Result: {result}")
+
+        else:
+            print("Invalid choice. Try again.")
+
 if __name__ == "__main__":
     main()
